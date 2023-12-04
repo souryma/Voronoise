@@ -1,12 +1,11 @@
-﻿Shader "Tutorial/028_voronoi_noise/2d" {
+﻿Shader "Voronoi/Ronja_028_voronoi_noise/2d_full" {
 	Properties {
 		_CellSize ("Cell Size", Range(0, 2)) = 2
 		_BorderColor ("Border Color", Color) = (0,0,0,1)
-//		_MainTex ("Texture", 2D) = "white" {}
+		_MainTex ("Texture", 2D) = "white" {}
 	}
 	SubShader {
-		Tags{ "RenderType"="Opaque" }
-//		Tags{ "RenderType"="Opaque" "Queue"="Geometry"}
+		Tags{ "RenderType"="Opaque" "Queue"="Geometry"}
 
 		CGPROGRAM
 

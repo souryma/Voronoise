@@ -2,7 +2,7 @@
 // using System.Collections.Generic;
 using UnityEngine;
 
-public class VoronoiDiagram : MonoBehaviour
+public class SlowVoronoiDiagram : MonoBehaviour
 {
     public Vector2Int imageDim;
     public int regionAmount;
