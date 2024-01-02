@@ -15,28 +15,28 @@ public class MovePlayer : MonoBehaviour
         if (Input.GetKey(KeyCode.DownArrow))
         {
             Vector3 postion = transform.position;
-            postion.z -= 0.1f;
+            postion.z -= 0.5f;
             transform.position = postion;
         }
 
         if (Input.GetKey(KeyCode.UpArrow))
         {
             Vector3 postion = transform.position;
-            postion.z += 0.1f;
+            postion.z += 0.5f;
             transform.position = postion;
         }
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             Vector3 postion = transform.position;
-            postion.x -= 0.1f;
+            postion.x -= 0.5f;
             transform.position = postion;
         }
 
         if (Input.GetKey(KeyCode.RightArrow))
         {
             Vector3 postion = transform.position;
-            postion.x += 0.1f;
+            postion.x += 0.5f;
             transform.position = postion;
         }
     }
