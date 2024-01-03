@@ -413,6 +413,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1626569765}
   - component: {fileID: 1626569764}
+  - component: {fileID: 1626569766}
   m_Layer: 0
   m_Name: Voronoi
   m_TagString: Untagged
@@ -433,9 +434,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mat: {fileID: 2100000, guid: e4d5a80952155054f8e508ed0aae7eb7, type: 2}
-  regionAmount: 50
+  regionAmount: 500
   imageDim: {x: 1000, y: 1000}
-  player: {fileID: 449254059}
+  cells: []
 --- !u!4 &1626569765
 Transform:
   m_ObjectHideFlags: 0
@@ -451,6 +452,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1626569766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626569763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c655097add9eb5418b7cdaf2fb2852f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voronoi: {fileID: 1626569764}
+  player: {fileID: 449254059}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

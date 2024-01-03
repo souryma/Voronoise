@@ -32,7 +32,7 @@ public class AudioCell : MonoBehaviour
     [Range(0, 2)] public float noteHeight = 1;
 
     private AudioMixer _audioMixer;
-    private float _fadeOutDuration = 10.0f;
+    private float _fadeOutDuration = 5.0f;
 
     // Update is called once per frame
     void Update()

@@ -14,7 +14,7 @@ public class CellInstantiator : MonoBehaviour
         {
             GameObject newObject = Instantiate(cellPrefab) as GameObject;
             AudioCell newAudioCell = newObject.AddComponent<AudioCell>();
-            newAudioCell.Create(soundBank[Random.Range(0, 10)], Random.Range(0.5f, 1), Random.Range(0.4f, 5), 1);
+            newAudioCell.Create(soundBank[Random.Range(0, soundBank.Count)], Random.Range(0.5f, 1), Random.Range(0.4f, 5), 1);
             
             audioCells.Add(newAudioCell);
         }

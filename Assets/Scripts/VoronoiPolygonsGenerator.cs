@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using VoronatorSharp;
@@ -15,19 +13,13 @@ public class VoronoiPolygonsGenerator : MonoBehaviour
 
     public Voronator voronatorDiagram;
 
-    public Transform player;
-
-    // The cell the player is in
-    private int _playerCell = 0;
-    private int _previousPlayerCell = 1;
-
-    private List<GameObject> _cells;
+    public List<GameObject> cells;
 
     void Start()
     {
         _germes = new Vector2[regionAmount];
         _colorsRegions = new Color[regionAmount];
-        _cells = new List<GameObject>(regionAmount);
+        cells = new List<GameObject>(regionAmount);
 
         // Generates random cells position
         for (int i = 0; i < regionAmount; i++)
@@ -83,36 +75,8 @@ public class VoronoiPolygonsGenerator : MonoBehaviour
             mf.mesh.triangles = trig;
 
             go.AddComponent<MeshRenderer>().material = mat;
-            _cells.Add(go);
+            cells.Add(go);
         }
-    }
-
-    public void Update()
-    {
-        _playerCell = voronatorDiagram.Find(new Vector2(player.position.x, -player.position.z), _previousPlayerCell);
-        if (_playerCell != _previousPlayerCell)
-        {
-            _cells[_playerCell].GetComponent<MeshRenderer>().material.color = new Color(Random.Range(0f, 1f),
-                Random.Range(0f, 1f), Random.Range(0f, 1f), 1f);
-
-            // Fade previous cell to black in 5 seconds
-            StartCoroutine(FadeToBlack(5, _cells[_previousPlayerCell].GetComponent<MeshRenderer>().material));
-            _previousPlayerCell = _playerCell;
-        }
-    }
-
-    private IEnumerator FadeToBlack(float duration, Material mat)
-    {
-        float currentTime = 0;
-        Color start = mat.color;
-        while (currentTime < duration)
-        {
-            currentTime += Time.deltaTime;
-            mat.color = Color.Lerp(start, Color.black, currentTime / duration);
-            yield return null;
-        }
-
-        yield break;
     }
 
     private Vector3[] listV2toV3Array(List<Vector2> v2)
