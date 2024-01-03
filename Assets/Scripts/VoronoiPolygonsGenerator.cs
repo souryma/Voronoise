@@ -61,29 +61,23 @@ public class VoronoiPolygonsGenerator : MonoBehaviour
             Vector3[] vertices = listV2toV3Array(voronatorDiagram.GetClippedPolygon(i));
             mf.mesh.vertices = vertices;
 
-            int[] trig = null;
+            int[] trig = new int[(vertices.Length - 2) * 3];
 
-            // TODO : make it mathematic 
-            switch (vertices.Length)
+            int trianglePoint = 1;
+            for (int j = 0; j < trig.Length; j++)
             {
-                case 3:
-                    trig = new int[] {0, 1, 2};
-                    break;
-                case 4:
-                    trig = new int[] {0, 1, 2, 0, 2, 3};
-                    break;
-                case 5:
-                    trig = new int[] {0, 1, 2, 0, 2, 3, 0, 3, 4};
-                    break;
-                case 6:
-                    trig = new int[] {0, 1, 2, 0, 2, 3, 0, 3, 4, 0, 4, 5};
-                    break;
-                case 7:
-                    trig = new int[] {0, 1, 2, 0, 2, 3, 0, 3, 4, 0, 4, 5, 0, 5, 6};
-                    break;
-                case 8:
-                    trig = new int[] {0, 1, 2, 0, 2, 3, 0, 3, 4, 0, 4, 5, 0, 5, 6, 0, 6, 7};
-                    break;
+                if (j % 3 == 0)
+                {
+                    trig[j] = 0;
+                }
+                else
+                {
+                    trig[j] = trianglePoint;
+                    if (j % 3 == 1)
+                    {
+                        trianglePoint++;
+                    }
+                }
             }
 
             mf.mesh.triangles = trig;
@@ -100,13 +94,13 @@ public class VoronoiPolygonsGenerator : MonoBehaviour
         {
             _cells[_playerCell].GetComponent<MeshRenderer>().material.color = new Color(Random.Range(0f, 1f),
                 Random.Range(0f, 1f), Random.Range(0f, 1f), 1f);
-            
+
             // Fade previous cell to black in 5 seconds
-            StartCoroutine(FadeToBlack(5, _cells[_previousPlayerCell].GetComponent<MeshRenderer>().material ));
+            StartCoroutine(FadeToBlack(5, _cells[_previousPlayerCell].GetComponent<MeshRenderer>().material));
             _previousPlayerCell = _playerCell;
         }
     }
-    
+
     private IEnumerator FadeToBlack(float duration, Material mat)
     {
         float currentTime = 0;
