@@ -3,6 +3,8 @@ using UnityEngine;
 using VoronatorSharp;
 using Random = UnityEngine.Random;
 
+// DOC VORONATOR : https://github.com/BorisTheBrave/voronator-sharp?tab=readme-ov-file#edge-cases
+
 public class VoronoiPolygonsGenerator : MonoBehaviour
 {
     public Material mat;
@@ -14,12 +16,14 @@ public class VoronoiPolygonsGenerator : MonoBehaviour
     public Voronator voronatorDiagram;
 
     public List<GameObject> cells;
+    public List<int> lockedCellsIds;
 
     void Start()
     {
         _germes = new Vector2[regionAmount];
         _colorsRegions = new Color[regionAmount];
         cells = new List<GameObject>(regionAmount);
+        lockedCellsIds = new List<int>(regionAmount);
 
         // Generates random cells position
         for (int i = 0; i < regionAmount; i++)
@@ -44,6 +48,7 @@ public class VoronoiPolygonsGenerator : MonoBehaviour
                     // TODO : make the scale and pos good
                     //position = new Vector3(-4.7f, 0, 4.4f),
                     //localScale = new Vector3(0.007f, 0.007f, 0.007f)
+                    //position = new Vector3(_germes[i].x, 0, _germes[i].y)
                 },
                 name = "poly" + i
             };

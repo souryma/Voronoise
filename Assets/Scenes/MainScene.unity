@@ -152,6 +152,7 @@ MonoBehaviour:
   voronoi: {fileID: 528592630}
   musicManager: {fileID: 1593253955}
   player: {fileID: 859296190}
+  lockCellKey: 32
 --- !u!114 &528592630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,6 +169,7 @@ MonoBehaviour:
   regionAmount: 50
   imageDim: {x: 1000, y: 1000}
   cells: []
+  lockedCellsIds: 
 --- !u!4 &528592631
 Transform:
   m_ObjectHideFlags: 0
@@ -496,6 +498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f81a185402e6e6344bebeb7fa843d6a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  voronoi: {fileID: 528592630}
   cellPrefab: {fileID: 549889725863153459, guid: 37c3f031358fa2a47b72a034e2c52338, type: 3}
   audioCells: []
   soundBank:

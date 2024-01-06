@@ -4,8 +4,9 @@ using UnityEngine.Audio;
 
 public class AudioCell : MonoBehaviour
 {
-    public AudioCell Create(AudioClip _clip, float _volume, float _pitch, float _noteHeight)
+    public AudioCell Create(int _id, AudioClip _clip, float _volume, float _pitch, float _noteHeight)
     {
+        id = _id;
         clip = _clip;
         volume = _volume;
         pitch = _pitch;
@@ -22,6 +23,7 @@ public class AudioCell : MonoBehaviour
 
     public AudioSource audioSource;
     public AudioClip clip;
+    public int id;
 
     [Range(0, 1)] public float volume = 1;
 

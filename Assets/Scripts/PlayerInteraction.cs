@@ -14,23 +14,53 @@ public class PlayerInteraction : MonoBehaviour
 
     private bool _isMusicPlaying = false;
 
+    public KeyCode lockCellKey = KeyCode.Space;
+
     public void Update()
     {
+        // Get the id of the cell where the player is
         _playerCell =
             voronoi.voronatorDiagram.Find(new Vector2(player.position.x, -player.position.z), _previousPlayerCell);
+
+        // Check if its a different cell than before
         if (_playerCell != _previousPlayerCell)
         {
             if (_isMusicPlaying)
-                musicManager.FadeFirstGeneratedSound();
+                musicManager.FadeOutMusicCell(_previousPlayerCell);
 
-            voronoi.cells[_playerCell].GetComponent<MeshRenderer>().material.color = new Color(Random.Range(0f, 1f),
-                Random.Range(0f, 1f), Random.Range(0f, 1f), 1f);
-            musicManager.GenerateRandomSound();
+            // Check if the cell is not already locked
+            if (!voronoi.lockedCellsIds.Contains(_playerCell))
+            {
+                voronoi.cells[_playerCell].GetComponent<MeshRenderer>().material.color = new Color(Random.Range(0f, 1f),
+                    Random.Range(0f, 1f), Random.Range(0f, 1f), 1f);
+                musicManager.GenerateRandomSound(_playerCell);
+            }
 
-            // Fade previous cell to black in 5 seconds
-            StartCoroutine(FadeToBlack(5, voronoi.cells[_previousPlayerCell].GetComponent<MeshRenderer>().material));
+            // If the last cell to destroy is not locked
+            if (!voronoi.lockedCellsIds.Contains(_previousPlayerCell))
+            {
+                // Fade previous cell to black in 5 seconds
+                StartCoroutine(FadeToBlack(5,
+                    voronoi.cells[_previousPlayerCell].GetComponent<MeshRenderer>().material));
+            }
+
             _previousPlayerCell = _playerCell;
             _isMusicPlaying = true;
+        }
+
+        if (Input.GetKeyDown(lockCellKey))
+        {
+            if (voronoi.lockedCellsIds.Contains(_playerCell))
+            {
+                // If the cell is already locked, we unlock it
+                voronoi.lockedCellsIds.Remove(_playerCell);
+                voronoi.cells[_playerCell].GetComponent<MeshRenderer>().material.color = new Color(0.5f, 0.5f, 1, 1f);
+            }
+            else
+            {
+                voronoi.lockedCellsIds.Add(_playerCell);
+                voronoi.cells[_playerCell].GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1, 1f);
+            }
         }
     }
 
