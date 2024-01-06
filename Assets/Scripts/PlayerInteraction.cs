@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerInteraction : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class PlayerInteraction : MonoBehaviour
 
     public void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Application.Quit();
+        
         // Get the id of the cell where the player is
         _playerCell =
             voronoi.voronatorDiagram.Find(new Vector2(player.position.x, -player.position.z), _previousPlayerCell);
@@ -48,19 +52,24 @@ public class PlayerInteraction : MonoBehaviour
             _isMusicPlaying = true;
         }
 
-        if (Input.GetKeyDown(lockCellKey))
+        if (Input.GetKeyDown(lockCellKey) || Gamepad.current.aButton.wasPressedThisFrame)
         {
-            if (voronoi.lockedCellsIds.Contains(_playerCell))
-            {
-                // If the cell is already locked, we unlock it
-                voronoi.lockedCellsIds.Remove(_playerCell);
-                voronoi.cells[_playerCell].GetComponent<MeshRenderer>().material.color = new Color(0.5f, 0.5f, 1, 1f);
-            }
-            else
-            {
-                voronoi.lockedCellsIds.Add(_playerCell);
-                voronoi.cells[_playerCell].GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1, 1f);
-            }
+            LockCell();
+        }
+    }
+
+    public void LockCell()
+    {
+        if (voronoi.lockedCellsIds.Contains(_playerCell))
+        {
+            // If the cell is already locked, we unlock it
+            voronoi.lockedCellsIds.Remove(_playerCell);
+            voronoi.cells[_playerCell].GetComponent<MeshRenderer>().material.color = new Color(0.5f, 0.5f, 1, 1f);
+        }
+        else
+        {
+            voronoi.lockedCellsIds.Add(_playerCell);
+            voronoi.cells[_playerCell].GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1, 1f);
         }
     }
 
