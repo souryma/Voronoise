@@ -58,7 +58,7 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
-    public void LockCell()
+    private void LockCell()
     {
         if (voronoi.lockedCellsIds.Contains(_playerCell))
         {
