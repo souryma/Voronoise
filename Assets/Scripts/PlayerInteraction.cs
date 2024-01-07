@@ -52,7 +52,7 @@ public class PlayerInteraction : MonoBehaviour
             _isMusicPlaying = true;
         }
 
-        if (Input.GetKeyDown(lockCellKey) || Gamepad.current.aButton.wasPressedThisFrame)
+        if (Input.GetKeyDown(lockCellKey) || Input.GetKeyDown(KeyCode.Joystick1Button0))
         {
             LockCell();
         }

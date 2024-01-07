@@ -166,8 +166,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mat: {fileID: 2100000, guid: e4d5a80952155054f8e508ed0aae7eb7, type: 2}
-  regionAmount: 50
-  imageDim: {x: 1000, y: 1000}
+  regionAmount: 500
+  imageDim: {x: 2000, y: 2000}
   cells: []
   lockedCellsIds: 
 --- !u!4 &528592631
@@ -271,7 +271,7 @@ Transform:
   m_GameObject: {fileID: 717124137}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 500, y: 4.24, z: -500}
+  m_LocalPosition: {x: 1000, y: 4.24, z: -1000}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -371,7 +371,7 @@ Transform:
   m_GameObject: {fileID: 859296187}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 500, y: 0.1, z: -500}
+  m_LocalPosition: {x: 1000, y: 0.1, z: -1000}
   m_LocalScale: {x: 25, y: 25, z: 25}
   m_ConstrainProportionsScale: 1
   m_Children: []
