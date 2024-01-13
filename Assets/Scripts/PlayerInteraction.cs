@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using Random = UnityEngine.Random;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    public VoronoiPolygonsGenerator voronoi;
+    private VoronoiPolygonsGenerator _voronoi;
     public MusicSampleManager musicManager;
 
     public Transform player;
@@ -17,6 +18,11 @@ public class PlayerInteraction : MonoBehaviour
 
     public KeyCode lockCellKey = KeyCode.Space;
 
+    private void Start()
+    {
+        _voronoi = GameObject.Find("Voronoi").GetComponent<VoronoiPolygonsGenerator>();
+    }
+
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -24,7 +30,7 @@ public class PlayerInteraction : MonoBehaviour
         
         // Get the id of the cell where the player is
         _playerCell =
-            voronoi.voronatorDiagram.Find(new Vector2(player.position.x, -player.position.z), _previousPlayerCell);
+            _voronoi.voronatorDiagram.Find(new Vector2(player.position.x, -player.position.z), _previousPlayerCell);
 
         // Check if its a different cell than before
         if (_playerCell != _previousPlayerCell)
@@ -33,19 +39,19 @@ public class PlayerInteraction : MonoBehaviour
                 musicManager.FadeOutMusicCell(_previousPlayerCell);
 
             // Check if the cell is not already locked
-            if (!voronoi.lockedCellsIds.Contains(_playerCell))
+            if (!_voronoi.lockedCellsIds.Contains(_playerCell))
             {
-                voronoi.cells[_playerCell].GetComponent<MeshRenderer>().material.color = new Color(Random.Range(0f, 1f),
+                _voronoi.cells[_playerCell].GetComponent<MeshRenderer>().material.color = new Color(Random.Range(0f, 1f),
                     Random.Range(0f, 1f), Random.Range(0f, 1f), 1f);
                 musicManager.GenerateRandomSound(_playerCell);
             }
 
             // If the last cell to destroy is not locked
-            if (!voronoi.lockedCellsIds.Contains(_previousPlayerCell))
+            if (!_voronoi.lockedCellsIds.Contains(_previousPlayerCell))
             {
                 // Fade previous cell to black in 5 seconds
                 StartCoroutine(FadeToBlack(5,
-                    voronoi.cells[_previousPlayerCell].GetComponent<MeshRenderer>().material));
+                    _voronoi.cells[_previousPlayerCell].GetComponent<MeshRenderer>().material));
             }
 
             _previousPlayerCell = _playerCell;
@@ -60,16 +66,16 @@ public class PlayerInteraction : MonoBehaviour
 
     private void LockCell()
     {
-        if (voronoi.lockedCellsIds.Contains(_playerCell))
+        if (_voronoi.lockedCellsIds.Contains(_playerCell))
         {
             // If the cell is already locked, we unlock it
-            voronoi.lockedCellsIds.Remove(_playerCell);
-            voronoi.cells[_playerCell].GetComponent<MeshRenderer>().material.color = new Color(0.5f, 0.5f, 1, 1f);
+            _voronoi.lockedCellsIds.Remove(_playerCell);
+            _voronoi.cells[_playerCell].GetComponent<MeshRenderer>().material.color = new Color(0.5f, 0.5f, 1, 1f);
         }
         else
         {
-            voronoi.lockedCellsIds.Add(_playerCell);
-            voronoi.cells[_playerCell].GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1, 1f);
+            _voronoi.lockedCellsIds.Add(_playerCell);
+            _voronoi.cells[_playerCell].GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1, 1f);
         }
     }
 

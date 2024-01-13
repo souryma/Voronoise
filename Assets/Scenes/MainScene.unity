@@ -119,72 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &528592628
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 528592631}
-  - component: {fileID: 528592630}
-  - component: {fileID: 528592629}
-  m_Layer: 0
-  m_Name: Voronoi
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &528592629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 528592628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c655097add9eb5418b7cdaf2fb2852f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  voronoi: {fileID: 528592630}
-  musicManager: {fileID: 1593253955}
-  player: {fileID: 859296190}
-  lockCellKey: 32
---- !u!114 &528592630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 528592628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78189f6ea0d7b8a42bc767e7a1bd5f80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mat: {fileID: 2100000, guid: e4d5a80952155054f8e508ed0aae7eb7, type: 2}
-  regionAmount: 500
-  imageDim: {x: 2000, y: 2000}
-  cells: []
-  lockedCellsIds: 
---- !u!4 &528592631
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 528592628}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &717124137
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,6 +222,7 @@ GameObject:
   - component: {fileID: 859296190}
   - component: {fileID: 859296189}
   - component: {fileID: 859296188}
+  - component: {fileID: 859296191}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -377,6 +312,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &859296191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859296187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c655097add9eb5418b7cdaf2fb2852f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicManager: {fileID: 1593253955}
+  player: {fileID: 859296190}
+  lockCellKey: 32
 --- !u!1 &1070179941
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,7 +449,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f81a185402e6e6344bebeb7fa843d6a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  voronoi: {fileID: 528592630}
   cellPrefab: {fileID: 549889725863153459, guid: 37c3f031358fa2a47b72a034e2c52338, type: 3}
   audioCells: []
   soundBank:
@@ -533,5 +482,4 @@ SceneRoots:
   - {fileID: 717124140}
   - {fileID: 1070179943}
   - {fileID: 859296190}
-  - {fileID: 528592631}
   - {fileID: 1593253956}

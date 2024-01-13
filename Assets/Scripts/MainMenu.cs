@@ -4,8 +4,10 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public VoronoiPolygonsGenerator voronoi;
     public void PlayGame()
     {
+        voronoi.StartGame();
         SceneManager.LoadScene("Scenes/MainScene");
     }
 

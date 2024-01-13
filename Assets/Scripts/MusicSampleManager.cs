@@ -1,15 +1,19 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class MusicSampleManager : MonoBehaviour
 {
-    public VoronoiPolygonsGenerator voronoi;
+    private VoronoiPolygonsGenerator _voronoi;
     
     public GameObject cellPrefab;
     public List<AudioCell> audioCells;
     public List<AudioClip> soundBank;
+
+    private void Start()
+    {
+        _voronoi = GameObject.Find("Voronoi").GetComponent<VoronoiPolygonsGenerator>();
+    }
 
     public void GenerateRandomSound(int cellId)
     {
@@ -31,7 +35,7 @@ public class MusicSampleManager : MonoBehaviour
         AudioCell cellToDestroy = audioCells.Find(cell => cell.id == id);
 
         // Check if the cell is not locked
-        if (voronoi.lockedCellsIds.Contains(cellToDestroy.id))
+        if (_voronoi.lockedCellsIds.Contains(cellToDestroy.id))
             return;
 
         StartCoroutine(cellToDestroy.FadeAndDestroy());
@@ -43,7 +47,7 @@ public class MusicSampleManager : MonoBehaviour
         AudioCell cellToDestroy = audioCells[0];
 
         // Check if the cell is not locked
-        if (!voronoi.lockedCellsIds.Contains(cellToDestroy.id))
+        if (!_voronoi.lockedCellsIds.Contains(cellToDestroy.id))
             return;
 
         StartCoroutine(cellToDestroy.FadeAndDestroy());

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using VoronatorSharp;
@@ -9,7 +10,8 @@ public class VoronoiPolygonsGenerator : MonoBehaviour
 {
     public Material mat;
     private Vector2[] _germes;
-    public int regionAmount = 10;
+    public int regionAmount = 500;
+    public float test = 0;
     public Vector2Int imageDim = new Vector2Int(1920, 1080);
     private Color[] _colorsRegions;
 
@@ -18,7 +20,18 @@ public class VoronoiPolygonsGenerator : MonoBehaviour
     public List<GameObject> cells;
     public List<int> lockedCellsIds;
 
-    void Start()
+    private void Start()
+    {
+        DontDestroyOnLoad(this);
+        //StartGame();
+    }
+
+    public void UpdateNbOfCell(float nb)
+    {
+        regionAmount = (int)nb;
+    }
+
+    public void StartGame()
     {
         _germes = new Vector2[regionAmount];
         _colorsRegions = new Color[regionAmount];
