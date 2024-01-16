@@ -22,7 +22,7 @@ public class MusicSampleManager : MonoBehaviour
         AudioCell newAudioCell = newObject.AddComponent<AudioCell>();
 
         // Sound creation
-        newAudioCell.Create(cellId, soundBank[Random.Range(0, soundBank.Count)], Random.Range(0.5f, 1),
+        newAudioCell.Create(cellId, soundBank[Random.Range(0, soundBank.Count)], Random.Range(0.2f, 0.8f),
             Random.Range(0.4f, 2),
             1);
 
