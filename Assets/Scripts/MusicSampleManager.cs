@@ -15,14 +15,14 @@ public class MusicSampleManager : MonoBehaviour
         _voronoi = GameObject.Find("Voronoi").GetComponent<VoronoiPolygonsGenerator>();
     }
 
-    public void GenerateRandomSound(int cellId)
+    public void GenerateRandomSound(int cellId, MeshRenderer cell)
     {
         GameObject newObject = Instantiate(cellPrefab, transform, true) as GameObject;
         newObject.name = "MusicSample" + cellId;
         AudioCell newAudioCell = newObject.AddComponent<AudioCell>();
 
         // Sound creation
-        newAudioCell.Create(cellId, soundBank[Random.Range(0, soundBank.Count)], Random.Range(0.2f, 0.8f),
+        newAudioCell.Create(cell, cellId, soundBank[Random.Range(0, soundBank.Count)], Random.Range(0.2f, 0.8f),
             Random.Range(0.4f, 2),
             1);
 

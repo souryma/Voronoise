@@ -43,15 +43,14 @@ public class PlayerInteraction : MonoBehaviour
             {
                 _voronoi.cells[_playerCell].GetComponent<MeshRenderer>().material.color = new Color(Random.Range(0f, 1f),
                     Random.Range(0f, 1f), Random.Range(0f, 1f), 1f);
-                musicManager.GenerateRandomSound(_playerCell);
+                musicManager.GenerateRandomSound(_playerCell, _voronoi.cells[_playerCell].GetComponent<MeshRenderer>());
             }
 
             // If the last cell to destroy is not locked
             if (!_voronoi.lockedCellsIds.Contains(_previousPlayerCell))
             {
                 // Fade previous cell to black in 5 seconds
-                StartCoroutine(FadeToBlack(5,
-                    _voronoi.cells[_previousPlayerCell].GetComponent<MeshRenderer>().material));
+                // StartCoroutine(FadeToBlack(5, _voronoi.cells[_previousPlayerCell].GetComponent<MeshRenderer>().material));
             }
 
             _previousPlayerCell = _playerCell;
@@ -70,12 +69,14 @@ public class PlayerInteraction : MonoBehaviour
         {
             // If the cell is already locked, we unlock it
             _voronoi.lockedCellsIds.Remove(_playerCell);
-            _voronoi.cells[_playerCell].GetComponent<MeshRenderer>().material.color = new Color(0.5f, 0.5f, 1, 1f);
+            musicManager.audioCells.Find(cell => cell.id == _playerCell).LockCell(false);
+            //_voronoi.cells[_playerCell].GetComponent<MeshRenderer>().material.color = new Color(0.5f, 0.5f, 1, 1f);
         }
         else
         {
             _voronoi.lockedCellsIds.Add(_playerCell);
-            _voronoi.cells[_playerCell].GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1, 1f);
+            musicManager.audioCells.Find(cell => cell.id == _playerCell).LockCell(true);
+            //_voronoi.cells[_playerCell].GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1, 1f);
         }
     }
 

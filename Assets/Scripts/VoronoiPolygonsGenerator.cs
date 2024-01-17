@@ -13,7 +13,6 @@ public class VoronoiPolygonsGenerator : MonoBehaviour
     public int regionAmount = 500;
     public float test = 0;
     public Vector2Int imageDim = new Vector2Int(1920, 1080);
-    private Color[] _colorsRegions;
 
     public Voronator voronatorDiagram;
 
@@ -34,7 +33,6 @@ public class VoronoiPolygonsGenerator : MonoBehaviour
     public void StartGame()
     {
         _germes = new Vector2[regionAmount];
-        _colorsRegions = new Color[regionAmount];
         cells = new List<GameObject>(regionAmount);
         lockedCellsIds = new List<int>(regionAmount);
 
@@ -42,7 +40,6 @@ public class VoronoiPolygonsGenerator : MonoBehaviour
         for (int i = 0; i < regionAmount; i++)
         {
             _germes[i] = new Vector2Int(Random.Range(0, imageDim.x), Random.Range(0, imageDim.y));
-            _colorsRegions[i] = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1f);
         }
 
         // Generate voronator diagram
