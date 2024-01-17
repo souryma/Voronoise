@@ -470,6 +470,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 623ab34e04371ee44b402c4baffef37d, type: 3}
   - {fileID: 8300000, guid: 9c27eaad98014204381ab1578d8b441d, type: 3}
   guitar:
+  - {fileID: 8300000, guid: 67290d3b674aab04a9f9c6fdbb12fce6, type: 3}
+  - {fileID: 8300000, guid: 9fbc07d5461033b49b6e3305d9a75d64, type: 3}
+  - {fileID: 8300000, guid: eb21325bc7a362149bec54bd98ee8991, type: 3}
   - {fileID: 8300000, guid: d64b87e06b2d6ac41b2d80e9a4da4d05, type: 3}
   - {fileID: 8300000, guid: 38d08df06bc1782458adb1648d6aadee, type: 3}
   soundBank5:
