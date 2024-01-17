@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      face-with-spiral-eyes_1f635-200d-1f4ab_0: -1812080196228016556
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

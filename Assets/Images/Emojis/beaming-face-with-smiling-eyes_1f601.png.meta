@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      beaming-face-with-smiling-eyes_1f601_0: 7403059289750815854
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

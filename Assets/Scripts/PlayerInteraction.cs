@@ -26,7 +26,7 @@ public class PlayerInteraction : MonoBehaviour
         new Vector2Int(220, 310),
         new Vector2Int(140, 200),
         new Vector2Int(0, 60),
-        new Vector2Int(20, 40)
+        new Vector2Int(15, 50)
     };
 
     public Sprite happy;
@@ -80,12 +80,21 @@ public class PlayerInteraction : MonoBehaviour
             // Check if the cell is not already locked
             if (!_voronoi.lockedCellsIds.Contains(_playerCell))
             {
+                float sat = 0.5f;
+                float brightness = 1f;
+
+                if (musicManager.isCACA)
+                {
+                    sat = 0.75f;
+                    brightness = 0.45f;
+                }
+                
                 _voronoi.cells[_playerCell].GetComponent<MeshRenderer>().material.color = Color.HSVToRGB(
                     Random.Range(
                         _colorSets[_colorSet].x / 360f,
                         _colorSets[_colorSet].y / 360f),
-                    0.5f,
-                    1f);
+                    sat,
+                    brightness);
 
                 musicManager.GenerateRandomSound(_playerCell, _voronoi.cells[_playerCell].GetComponent<MeshRenderer>());
             }

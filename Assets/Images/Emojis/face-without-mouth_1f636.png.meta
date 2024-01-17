@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      face-without-mouth_1f636_0: 4529557075646313137
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

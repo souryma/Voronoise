@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      melting-face_1fae0_0: -4532899451676513214
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      pile-of-poo_1f4a9_0: 1862487329663186856
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

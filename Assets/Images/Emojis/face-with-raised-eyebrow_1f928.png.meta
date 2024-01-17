@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      face-with-raised-eyebrow_1f928_0: 6746538920226108979
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

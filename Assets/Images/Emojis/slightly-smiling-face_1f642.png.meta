@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      slightly-smiling-face_1f642_0: -8411271496096471141
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -489,7 +489,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 092f2d915aa446d4da63e205c9b461fc, type: 3}
   soundBank6:
   - {fileID: 8300000, guid: 937a3989d17e0514e987ee3f0cf93167, type: 3}
-  caca: []
+  caca:
+  - {fileID: 8300000, guid: 8dd7e1aa93e12754da55a81213a199a1, type: 3}
+  - {fileID: 8300000, guid: ee322497f1bf5704fae6fe0cf4a1f242, type: 3}
+  - {fileID: 8300000, guid: 97bbae098369fef4fb39742b2afe9bdf, type: 3}
+  - {fileID: 8300000, guid: bf105a933e870244db3b82f0fbc75ebd, type: 3}
+  - {fileID: 8300000, guid: aaef9cd0c1e3ef04da9c669bf152a67a, type: 3}
   soundBank: []
   isCACA: 0
 --- !u!4 &1469366650
