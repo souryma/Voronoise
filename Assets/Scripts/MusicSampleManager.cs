@@ -13,7 +13,7 @@ public class MusicSampleManager : MonoBehaviour
     public List<AudioClip> drum;
     public List<AudioClip> choir;
     public List<AudioClip> guitar;
-    public List<AudioClip> soundBank5;
+    public List<AudioClip> synth;
     public List<AudioClip> soundBank6;
     
     public List<AudioClip> caca;
@@ -48,7 +48,7 @@ public class MusicSampleManager : MonoBehaviour
                         break;
                     case 4: soundBank.AddRange(guitar);
                         break;
-                    case 5: soundBank.AddRange(soundBank5);
+                    case 5: soundBank.AddRange(synth);
                         break;
                     case 6: soundBank.AddRange(soundBank6);
                         break;

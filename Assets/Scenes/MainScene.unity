@@ -485,8 +485,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: eb21325bc7a362149bec54bd98ee8991, type: 3}
   - {fileID: 8300000, guid: d64b87e06b2d6ac41b2d80e9a4da4d05, type: 3}
   - {fileID: 8300000, guid: 38d08df06bc1782458adb1648d6aadee, type: 3}
-  soundBank5:
-  - {fileID: 8300000, guid: 092f2d915aa446d4da63e205c9b461fc, type: 3}
+  synth:
+  - {fileID: 8300000, guid: 2fd55f91ea423664a963c2ac34f0d519, type: 3}
+  - {fileID: 8300000, guid: 58fb0a4073508fa42adcdd9d28c40d4a, type: 3}
+  - {fileID: 8300000, guid: 566ea3c963741b442a0c8d76486bde2d, type: 3}
+  - {fileID: 8300000, guid: 0ee9f0681eebf1c4c865ee23f90b052d, type: 3}
+  - {fileID: 8300000, guid: e808b50e6a4e6564cb5b61d223b718ff, type: 3}
   soundBank6:
   - {fileID: 8300000, guid: 937a3989d17e0514e987ee3f0cf93167, type: 3}
   caca:
