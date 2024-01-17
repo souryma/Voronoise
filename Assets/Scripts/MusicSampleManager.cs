@@ -16,31 +16,43 @@ public class MusicSampleManager : MonoBehaviour
     public List<AudioClip> soundBank5;
     public List<AudioClip> soundBank6;
     
+    public List<AudioClip> caca;
+    
     public List<AudioClip> soundBank;
+
+    public bool isCACA = false;
 
     private void Start()
     {
         _voronoi = GameObject.Find("Voronoi").GetComponent<VoronoiPolygonsGenerator>();
 
-        int numberOfSoundBanks = Random.Range(1, 3);
-
-        for (int i = 0; i < numberOfSoundBanks; i++)
+        if (Random.Range(0, 10) == 9)
         {
-            // Select random sound bank
-            switch (Random.Range(1, 7))
+            soundBank = caca;
+            isCACA = true;
+        }
+        else
+        {
+            int numberOfSoundBanks = Random.Range(1, 3);
+
+            for (int i = 0; i < numberOfSoundBanks; i++)
             {
-                case 1: soundBank.AddRange(piano);
-                    break;
-                case 2: soundBank.AddRange(drum);
-                    break;
-                case 3: soundBank.AddRange(choir);
-                    break;
-                case 4: soundBank.AddRange(guitar);
-                    break;
-                case 5: soundBank.AddRange(soundBank5);
-                    break;
-                case 6: soundBank.AddRange(soundBank6);
-                    break;
+                // Select random sound bank
+                switch (Random.Range(1, 7))
+                {
+                    case 1: soundBank.AddRange(piano);
+                        break;
+                    case 2: soundBank.AddRange(drum);
+                        break;
+                    case 3: soundBank.AddRange(choir);
+                        break;
+                    case 4: soundBank.AddRange(guitar);
+                        break;
+                    case 5: soundBank.AddRange(soundBank5);
+                        break;
+                    case 6: soundBank.AddRange(soundBank6);
+                        break;
+                }
             }
         }
     }

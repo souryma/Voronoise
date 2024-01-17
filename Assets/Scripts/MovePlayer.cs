@@ -6,6 +6,8 @@ public class MovePlayer : MonoBehaviour
 
     public PlayerInteraction player;
 
+    public MusicSampleManager musicManager;
+
     void Update()
     {
         float horizontal = Input.GetAxis("Horizontal");
@@ -29,18 +31,21 @@ public class MovePlayer : MonoBehaviour
             if (speed > 1000)
                 speed = 999;
         }
-        
-        if (speed is > 0 and <= 100)
-            player.playerSprite.sprite = player.happy;
-        else if (speed is > 100 and <= 250)
-            player.playerSprite.sprite = player.smile;
-        else if (speed is > 250 and <= 500)
-            player.playerSprite.sprite = player.weird;
-        else if (speed is > 500 and <= 700)
-            player.playerSprite.sprite = player.noMouth;
-        else if (speed is > 700 and <= 850)
-            player.playerSprite.sprite = player.lost;
-        else player.playerSprite.sprite = player.melt;
+
+        if (musicManager.isCACA)
+            player.playerSprite.sprite = player.POOP;
+        else
+        {
+            player.playerSprite.sprite = speed switch
+            {
+                > 0 and <= 100 => player.happy,
+                > 100 and <= 250 => player.smile,
+                > 250 and <= 500 => player.weird,
+                > 500 and <= 700 => player.noMouth,
+                > 700 and <= 850 => player.lost,
+                _ => player.melt
+            };
+        }
 
         // Relocate the player if he's out of bounds
         if (transform.position.z > -500)

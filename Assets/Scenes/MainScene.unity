@@ -244,6 +244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 175
   player: {fileID: 859296191}
+  musicManager: {fileID: 1469366649}
 --- !u!212 &859296189
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -334,6 +335,7 @@ MonoBehaviour:
   noMouth: {fileID: 4529557075646313137, guid: 57c19e3a5ca87c14e83d306c54f40abc, type: 3}
   lost: {fileID: -1812080196228016556, guid: d728397bec9dc9c4ca443150d508e349, type: 3}
   melt: {fileID: -4532899451676513214, guid: 6d77fcb6c0f1cea4792ca81ba16a081a, type: 3}
+  POOP: {fileID: 1862487329663186856, guid: ae672b475df87f243b95ccf421c558b1, type: 3}
   playerSprite: {fileID: 0}
 --- !u!1 &1070179941
 GameObject:
@@ -487,7 +489,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 092f2d915aa446d4da63e205c9b461fc, type: 3}
   soundBank6:
   - {fileID: 8300000, guid: 937a3989d17e0514e987ee3f0cf93167, type: 3}
+  caca: []
   soundBank: []
+  isCACA: 0
 --- !u!4 &1469366650
 Transform:
   m_ObjectHideFlags: 0

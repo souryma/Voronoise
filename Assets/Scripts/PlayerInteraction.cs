@@ -34,6 +34,7 @@ public class PlayerInteraction : MonoBehaviour
     public Sprite noMouth;
     public Sprite lost;
     public Sprite melt;
+    public Sprite POOP;
 
     public SpriteRenderer playerSprite;
 
