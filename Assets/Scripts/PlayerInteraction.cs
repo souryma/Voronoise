@@ -17,10 +17,21 @@ public class PlayerInteraction : MonoBehaviour
     private bool _isMusicPlaying = false;
 
     public KeyCode lockCellKey = KeyCode.Space;
-
+    
+    private Vector2Int[] _colorSets =
+    {
+        // Min and max hues, in degrees
+        new Vector2Int(220, 310),
+        new Vector2Int(140, 200),
+        new Vector2Int(0, 60)
+    };
+    
+    private int _colorSet;
+    
     private void Start()
     {
         _voronoi = GameObject.Find("Voronoi").GetComponent<VoronoiPolygonsGenerator>();
+        _colorSet = Random.Range(0, _colorSets.Length);
     }
 
     public void Update()
@@ -41,8 +52,13 @@ public class PlayerInteraction : MonoBehaviour
             // Check if the cell is not already locked
             if (!_voronoi.lockedCellsIds.Contains(_playerCell))
             {
-                _voronoi.cells[_playerCell].GetComponent<MeshRenderer>().material.color = new Color(Random.Range(0f, 1f),
-                    Random.Range(0f, 1f), Random.Range(0f, 1f), 1f);
+                _voronoi.cells[_playerCell].GetComponent<MeshRenderer>().material.color = Color.HSVToRGB(
+                    Random.Range(
+                        _colorSets[_colorSet].x / 360f,
+                        _colorSets[_colorSet].y / 360f),
+                    0.5f,
+                    1f);
+                
                 musicManager.GenerateRandomSound(_playerCell);
             }
 
