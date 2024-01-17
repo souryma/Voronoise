@@ -14,6 +14,20 @@ public class MovePlayer : MonoBehaviour
 
         transform.position += movementDirection * Time.deltaTime * speed;
 
+        if (Input.GetAxis("LeftTriggerXbox") == 1.0f)
+        {
+            speed -= 5;
+            if (speed < 1)
+                speed = 1;
+        }
+
+        if (Input.GetAxis("RightTriggerXbox") == 1.0f)
+        {
+            speed += 5;
+            if (speed > 1000)
+                speed = 999;
+        }
+
         // Relocate the player if he's out of bounds
         if (transform.position.z > -500)
         {
