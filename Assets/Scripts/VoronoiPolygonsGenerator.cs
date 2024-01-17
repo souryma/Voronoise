@@ -25,6 +25,11 @@ public class VoronoiPolygonsGenerator : MonoBehaviour
         //StartGame();
     }
 
+    public void Reboot()
+    {
+        Destroy(gameObject);
+    }
+
     public void UpdateNbOfCell(float nb)
     {
         regionAmount = (int)nb;
