@@ -26,8 +26,11 @@ public class PlayerInteraction : MonoBehaviour
         new Vector2Int(220, 310),
         new Vector2Int(140, 200),
         new Vector2Int(0, 60),
-        new Vector2Int(15, 50)
+        new Vector2Int(15, 50) // Caca color set, must be the last entry
     };
+
+    private float _colorSaturation = 0.5f;
+    private float _colorBrightness = 1f;
 
     public Sprite happy;
     public Sprite smile;
@@ -48,9 +51,13 @@ public class PlayerInteraction : MonoBehaviour
         _voronoi = GameObject.Find("Voronoi").GetComponent<VoronoiPolygonsGenerator>();
 
         if (musicManager.isCACA)
+        {
             _colorSet = _colorSets.Length - 1;
+            _colorSaturation = 0.75f;
+            _colorBrightness = 0.45f;
+        }
         else 
-            _colorSet = Random.Range(0, _colorSets.Length);
+            _colorSet = Random.Range(0, _colorSets.Length - 1);
     }
 
     private void RebootScene()
@@ -80,21 +87,12 @@ public class PlayerInteraction : MonoBehaviour
             // Check if the cell is not already locked
             if (!_voronoi.lockedCellsIds.Contains(_playerCell))
             {
-                float sat = 0.5f;
-                float brightness = 1f;
-
-                if (musicManager.isCACA)
-                {
-                    sat = 0.75f;
-                    brightness = 0.45f;
-                }
-                
                 _voronoi.cells[_playerCell].GetComponent<MeshRenderer>().material.color = Color.HSVToRGB(
                     Random.Range(
                         _colorSets[_colorSet].x / 360f,
                         _colorSets[_colorSet].y / 360f),
-                    sat,
-                    brightness);
+                    _colorSaturation,
+                    _colorBrightness);
 
                 musicManager.GenerateRandomSound(_playerCell, _voronoi.cells[_playerCell].GetComponent<MeshRenderer>());
             }

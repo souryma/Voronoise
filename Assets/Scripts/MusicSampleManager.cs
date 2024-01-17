@@ -22,7 +22,7 @@ public class MusicSampleManager : MonoBehaviour
 
     public bool isCACA = false;
 
-    private void Start()
+    private void Awake()
     {
         _voronoi = GameObject.Find("Voronoi").GetComponent<VoronoiPolygonsGenerator>();
 
