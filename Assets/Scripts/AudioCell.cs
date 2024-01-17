@@ -16,7 +16,7 @@ public class AudioCell : MonoBehaviour
         audioSource.clip = clip;
         _audioMixer = audioSource.outputAudioMixerGroup.audioMixer;
         UpdateSoundParameters();
-        FadeIn(2.0f);
+        //FadeIn(2.0f);
 
         return this;
     }
@@ -66,7 +66,7 @@ public class AudioCell : MonoBehaviour
 
     private void FadeIn(float duration)
     {
-        StartCoroutine(StartFade(duration, 60f));
+        StartCoroutine(StartFade(duration, 50f));
     }
 
     private void FadeOut(float duration)
