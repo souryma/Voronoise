@@ -4,8 +4,17 @@ using UnityEngine.Audio;
 
 public class AudioCell : MonoBehaviour
 {
-    public AudioCell Create(int _id, AudioClip _clip, float _volume, float _pitch, float _noteHeight)
+    private Material _cellMaterial;
+    private Color _cellActualColor;
+    private Color _cellBaseColor;
+    private Color _cellFadeColor;
+
+    public AudioCell Create(MeshRenderer cell, int _id, AudioClip _clip, float _volume, float _pitch, float _noteHeight)
     {
+        _cellMaterial = cell.material;
+        _cellActualColor = _cellMaterial.color;
+        _cellBaseColor = _cellMaterial.color;
+        _cellFadeColor = new Color(_cellActualColor.r / 2f, _cellActualColor.g / 2f, _cellActualColor.b / 2f);
         id = _id;
         clip = _clip;
         volume = _volume;
@@ -36,8 +45,12 @@ public class AudioCell : MonoBehaviour
     private AudioMixer _audioMixer;
     private float _fadeOutDuration = 5.0f;
 
+    private Coroutine _colorCoroutine;
+
+    private bool _isFirstTurn = true;
+
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         UpdateSoundParameters();
 
@@ -47,7 +60,20 @@ public class AudioCell : MonoBehaviour
             return;
         }
 
+        if (!_isFirstTurn)
+            StopCoroutine(_colorCoroutine);
+        _isFirstTurn = true;
+
         audioSource.Play();
+
+        _cellMaterial.color = _cellActualColor;
+        _colorCoroutine = StartCoroutine(FadeColor(audioSource.clip.length, _cellMaterial, _cellFadeColor, false));
+    }
+
+    // Color the cell in white when its locked
+    public void LockCell(bool state)
+    {
+        _cellActualColor = state ? Color.white : _cellBaseColor;
     }
 
     private void UpdateSoundParameters()
@@ -59,8 +85,13 @@ public class AudioCell : MonoBehaviour
 
     public IEnumerator FadeAndDestroy()
     {
-        FadeOut(_fadeOutDuration);
+        //StopCoroutine(_colorCoroutine);
+
+        FadeOutMusic(_fadeOutDuration);
+        StartCoroutine(FadeColor(_fadeOutDuration, _cellMaterial, Color.black, true));
         yield return new WaitForSeconds(_fadeOutDuration);
+
+        _cellMaterial.color = Color.black;
         Destroy(gameObject);
     }
 
@@ -69,7 +100,7 @@ public class AudioCell : MonoBehaviour
         StartCoroutine(StartFade(duration, 50f));
     }
 
-    private void FadeOut(float duration)
+    private void FadeOutMusic(float duration)
     {
         StartCoroutine(StartFade(duration, 0f));
     }
@@ -82,6 +113,23 @@ public class AudioCell : MonoBehaviour
         {
             currentTime += Time.deltaTime;
             audioSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
+            yield return null;
+        }
+
+        yield break;
+    }
+
+    private IEnumerator FadeColor(float duration, Material mat, Color targetColor, bool isOverAnotherFade)
+    {
+        float currentTime = 0;
+        Color start = mat.color;
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            if (isOverAnotherFade)
+                mat.color *= Color.Lerp(start, targetColor, currentTime / duration);
+            else
+                mat.color = Color.Lerp(start, targetColor, currentTime / duration);
             yield return null;
         }
 
