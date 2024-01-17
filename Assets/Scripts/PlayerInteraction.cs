@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class PlayerInteraction : MonoBehaviour
@@ -17,7 +18,7 @@ public class PlayerInteraction : MonoBehaviour
     private bool _isMusicPlaying = false;
 
     public KeyCode lockCellKey = KeyCode.Space;
-    
+
     private Vector2Int[] _colorSets =
     {
         // Min and max hues, in degrees
@@ -25,20 +26,29 @@ public class PlayerInteraction : MonoBehaviour
         new Vector2Int(140, 200),
         new Vector2Int(0, 60)
     };
-    
+
     private int _colorSet;
-    
+
     private void Start()
     {
         _voronoi = GameObject.Find("Voronoi").GetComponent<VoronoiPolygonsGenerator>();
         _colorSet = Random.Range(0, _colorSets.Length);
     }
 
+    private void RebootScene()
+    {
+        // Danger
+        _voronoi.Reboot();
+        SceneManager.LoadScene("Scenes/MenuScene");
+    }
+
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-            Application.Quit();
-        
+        if (Input.GetKeyDown(KeyCode.Joystick1Button7) || Input.GetKeyDown(KeyCode.Escape))
+        {
+            RebootScene();
+        }
+
         // Get the id of the cell where the player is
         _playerCell =
             _voronoi.voronatorDiagram.Find(new Vector2(player.position.x, -player.position.z), _previousPlayerCell);
@@ -58,7 +68,7 @@ public class PlayerInteraction : MonoBehaviour
                         _colorSets[_colorSet].y / 360f),
                     0.5f,
                     1f);
-                
+
                 musicManager.GenerateRandomSound(_playerCell, _voronoi.cells[_playerCell].GetComponent<MeshRenderer>());
             }
 
