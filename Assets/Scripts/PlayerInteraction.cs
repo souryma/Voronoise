@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class PlayerInteraction : MonoBehaviour
@@ -27,10 +28,21 @@ public class PlayerInteraction : MonoBehaviour
         new Vector2Int(0, 60)
     };
 
+    public Sprite happy;
+    public Sprite smile;
+    public Sprite weird;
+    public Sprite noMouth;
+    public Sprite lost;
+    public Sprite melt;
+
+    public SpriteRenderer playerSprite;
+
     private int _colorSet;
 
     private void Start()
     {
+        playerSprite = GetComponent<SpriteRenderer>();
+        playerSprite.sprite = happy;
         _voronoi = GameObject.Find("Voronoi").GetComponent<VoronoiPolygonsGenerator>();
         _colorSet = Random.Range(0, _colorSets.Length);
     }
