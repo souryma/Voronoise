@@ -25,7 +25,8 @@ public class PlayerInteraction : MonoBehaviour
         // Min and max hues, in degrees
         new Vector2Int(220, 310),
         new Vector2Int(140, 200),
-        new Vector2Int(0, 60)
+        new Vector2Int(0, 60),
+        new Vector2Int(20, 40)
     };
 
     public Sprite happy;
@@ -45,7 +46,11 @@ public class PlayerInteraction : MonoBehaviour
         playerSprite = GetComponent<SpriteRenderer>();
         playerSprite.sprite = happy;
         _voronoi = GameObject.Find("Voronoi").GetComponent<VoronoiPolygonsGenerator>();
-        _colorSet = Random.Range(0, _colorSets.Length);
+
+        if (musicManager.isCACA)
+            _colorSet = _colorSets.Length - 1;
+        else 
+            _colorSet = Random.Range(0, _colorSets.Length);
     }
 
     private void RebootScene()
