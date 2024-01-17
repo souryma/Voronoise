@@ -452,14 +452,11 @@ MonoBehaviour:
   cellPrefab: {fileID: 549889725863153459, guid: 37c3f031358fa2a47b72a034e2c52338, type: 3}
   audioCells: []
   soundBank:
-  - {fileID: 8300000, guid: 22696406c05f684449e0fde29dd75f54, type: 3}
-  - {fileID: 8300000, guid: 3e34700ad177bcc4cb389544fc0264b1, type: 3}
-  - {fileID: 8300000, guid: 937a3989d17e0514e987ee3f0cf93167, type: 3}
-  - {fileID: 8300000, guid: e82c18ca23ad4d040b1d2d2c1e642416, type: 3}
-  - {fileID: 8300000, guid: 693c994ce7b8a144e911d36775eb97cc, type: 3}
-  - {fileID: 8300000, guid: 3362a5e159d5f4d468f0215e1ef8a944, type: 3}
-  - {fileID: 8300000, guid: bd475a3d09ecb564b9b9d2eea423f68a, type: 3}
-  - {fileID: 8300000, guid: 3ae8c5b124b0648449081ff7b8a5f5f4, type: 3}
+  - {fileID: 8300000, guid: fc6e84a2979394148a1c30cebb48c807, type: 3}
+  - {fileID: 8300000, guid: bd14ca4a7e4e41249b3c9b5aae0c79f0, type: 3}
+  - {fileID: 8300000, guid: b59bb1f28b3d3be4392791fd2eb24e2f, type: 3}
+  - {fileID: 8300000, guid: 33b51908b796764478048a4fbe53d121, type: 3}
+  - {fileID: 8300000, guid: 4b30f1968550f764fbb7abf473ab75e5, type: 3}
 --- !u!4 &1593253956
 Transform:
   m_ObjectHideFlags: 0
