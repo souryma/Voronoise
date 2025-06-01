@@ -64,7 +64,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         // Danger
         _voronoi.Reboot();
-        SceneManager.LoadScene("Scenes/MenuScene");
+        SceneManager.LoadScene("Scenes/MenuScene_EN");
     }
 
     public void Update()
